@@ -49,5 +49,5 @@ jobs:
           echo test, and deploy your project.
 
       - name: Python Script
-        run: ./checkReviews.py
+        run: checkReviews.py
         shell: sh
