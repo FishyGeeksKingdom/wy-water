@@ -54,4 +54,6 @@ jobs:
             }' --jq '.data.repository.reviews')"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo $reviews
+
+      - name: Run Echo Reviews
+        run: echo $reviews
