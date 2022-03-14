@@ -51,3 +51,9 @@ jobs:
       - name: Python Script
         run: python checkReviews.py
         shell: sh
+
+      - name: Check Reviews Temp
+        check_review:
+          uses: ./.github/workflows/checkReviewers.yml
+          with:
+            pr_id: ${{ github.event.pull_request.number }}
