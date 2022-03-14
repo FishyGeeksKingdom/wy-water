@@ -65,9 +65,6 @@ jobs:
 
       - name: Run Echo Reviews
         run: echo ${{ secrets.PR_REVIEWS }}
-
-  get_approval_team:
-    runs-on: ubuntu-latest
     steps:
       - name: Get Team
         run: |
@@ -99,9 +96,6 @@ jobs:
 
       - name: Run Echo Team
         run: echo $APP_TEAM
-
-  find_approval:
-    runs-on: ubuntu-latest
     steps:
       - name: Run Echo Team
         run: |
