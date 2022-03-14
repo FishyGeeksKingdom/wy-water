@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           reviews="$(gh api graphql -F owner=$owner -F name=$REPO -f query='
-            query($name: String!, $owner: String!) {
+            query() {
               organization(login: "FishyGeeksKingdom") {
                 repository(name: "wy-water") {
                   id
