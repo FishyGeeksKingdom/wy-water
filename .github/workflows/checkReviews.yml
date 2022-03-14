@@ -48,3 +48,4 @@ jobs:
                 }
               }
             }' --jq '.data.repository.reviews')"
+        env: ${{ secrets.GITHUB_TOKEN }}
