@@ -53,6 +53,7 @@ jobs:
         shell: sh
 
   check_review:
+    uses: actions/checkout@v2
     uses: ./.github/workflows/checkReviewers.yml
     with:
       pr_id: ${{ github.event.pull_request.number }}
