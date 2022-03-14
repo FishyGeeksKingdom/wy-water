@@ -52,7 +52,7 @@ jobs:
         run: python checkReviews.py
         shell: sh
 
-      - name: Check Reviews Temp
-        uses: ./.github/workflows/checkReviews.yml
-        with:
-          pr_id: ${{ github.event.pull_request.number }}
+  check_review:
+    uses: ./.github/workflows/checkReviewers.yml
+    with:
+      pr_id: ${{ github.event.pull_request.number }}
