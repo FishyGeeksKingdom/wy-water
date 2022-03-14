@@ -61,7 +61,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Echo Reviews
-        run: echo $PR_REVIEWS
+        run: echo $TEAM_KEY
 
   get_approval_team:
     runs-on: ubuntu-latest
