@@ -12,7 +12,8 @@ jobs:
   check_reviews:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Get Reviews
+        run: |
           reviews=$(gh api graphql -F owner=$owner -F name=$REPO -f query='
             query {
               organization(login: "FishyGeeksKingdom") {
@@ -61,3 +62,34 @@ jobs:
 
       - name: Run Echo Reviews
         run: echo $PR_REVIEWS
+
+  get_approval_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Reviews
+        run: |
+          team_members=$(gh api graphql -F owner=$owner -F name=$REPO -f query='
+            query {
+              organization(login: "FishyGeeksKingdom") {
+                team(slug: "npm-test-team") {
+                  id
+                  members(first: 10) {
+                    edges {
+                      node {
+                        id
+                        login
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ')
+
+          echo 'APP_TEAM='$team_members >> $GITHUB_ENV
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Echo Team
+        run: echo $APP_TEAM
