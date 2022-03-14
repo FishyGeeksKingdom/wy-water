@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          reviews="$(gh api graphql -F owner=$owner -F name=$REPO -f query='
+          gh api graphql -F owner=$owner -F name=$REPO -f query='
             query {
               organization(login: "FishyGeeksKingdom") {
                 repository(name: "wy-water") {
@@ -51,9 +51,9 @@ jobs:
                   }
                 }
               }
-            }')"
+            }'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run Echo Reviews
-        run: echo $reviews
+      #- name: Run Echo Reviews
+      # run: echo $reviews
