@@ -65,7 +65,7 @@ jobs:
 
       - name: Run Echo Reviews
         run: echo ${{ secrets.PR_REVIEWS }}
-    steps:
+
       - name: Get Team
         run: |
           team_members=$(gh api graphql -F owner=$owner -F name=$REPO -f query='
@@ -96,7 +96,7 @@ jobs:
 
       - name: Run Echo Team
         run: echo $APP_TEAM
-    steps:
+
       - name: Run Echo Team
         run: |
           echo $APP_TEAM
