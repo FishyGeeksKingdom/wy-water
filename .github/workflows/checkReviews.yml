@@ -64,7 +64,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Echo Reviews
-        run: echo ${{ secrets.TEAM_KEY }}
+        run: echo ${{ secrets.PR_REVIEWS }}
 
   get_approval_team:
     runs-on: ubuntu-latest
@@ -96,6 +96,16 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.TEAM_KEY }}
+
+      - name: Run Echo Team
+        run: echo $APP_TEAM
+
+  find_approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Python Script
+        run: python checkReviews.py $PR_REVIEWS $APP_TEAM
+        shell: sh
 
       - name: Run Echo Team
         run: echo $APP_TEAM
