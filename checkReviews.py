@@ -4,8 +4,11 @@ import json
 
 if __name__== "__main__":
 
-  reviews = sys.argv[1]
-  teams = sys.argv[2]
+  reviews_raw = sys.argv[1]
+  teams_raw = sys.argv[2]
+
+  reviews = json.loads(reviews_raw)["data"]["organization"]["repository"]["reviews"]["edges"]
+  teams = json.loads(teams_raw)
 
   print(reviews)
   print(teams)
