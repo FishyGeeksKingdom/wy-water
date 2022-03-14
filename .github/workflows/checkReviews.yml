@@ -98,7 +98,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TEAM_KEY }}
 
       - name: Run Echo Team
-        run: echo $APP_TEAM
+        run: pwd
 
   find_approval:
     runs-on: ubuntu-latest
