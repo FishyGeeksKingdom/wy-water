@@ -59,3 +59,4 @@ jobs:
       pr_id: ${{ github.event.pull_request.number }}
       owner: $${{ github.repository_owner }}
       name: "FishyGeeksKingdom"
+      team_key: ${{ secrets.TEAM_KEY }}
