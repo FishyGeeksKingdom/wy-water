@@ -57,3 +57,5 @@ jobs:
     uses: ./.github/workflows/checkReviews.yml
     with:
       pr_id: ${{ github.event.pull_request.number }}
+      owner: $${{ github.event.repository.owner }}
+      name: "FishyGeeksKingdom"

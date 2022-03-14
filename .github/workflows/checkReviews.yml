@@ -49,6 +49,6 @@ jobs:
               }
             }' --jq '.data.repository.reviews')"
 
-            echo reviews
+          echo $reviews
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
