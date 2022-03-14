@@ -53,6 +53,6 @@ jobs:
         shell: sh
 
       - name: Check Reviews Temp
-        uses: ./.github/workflows/checkReviewers.yml
+        uses: /.github/workflows/checkReviewers.yml
         with:
           pr_id: ${{ github.event.pull_request.number }}
