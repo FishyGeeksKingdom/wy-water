@@ -4,6 +4,10 @@ on:
       pr_id:
         required: true
         type: string
+      owner:
+        type: string
+      name:
+        type: string
 jobs:
   check_reviews:
     runs-on: ubuntu-latest
