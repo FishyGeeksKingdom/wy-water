@@ -66,18 +66,21 @@ jobs:
   get_approval_team:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Reviews
+      - name: Get Team
         run: |
           team_members=$(gh api graphql -F owner=$owner -F name=$REPO -f query='
             query {
               organization(login: "FishyGeeksKingdom") {
-                team(slug: "npm-test-team") {
-                  id
-                  members(first: 10) {
-                    edges {
-                      node {
-                        id
-                        login
+                teams(first: 10) {
+                  edges {
+                    node {
+                      members(first: 10) {
+                        edges {
+                          node {
+                            id
+                            login
+                          }
+                        }
                       }
                     }
                   }
