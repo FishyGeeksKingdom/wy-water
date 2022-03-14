@@ -71,16 +71,12 @@ jobs:
           team_members=$(gh api graphql -F owner=$owner -F name=$REPO -f query='
             query {
               organization(login: "FishyGeeksKingdom") {
-                teams(first: 10) {
-                  edges {
-                    node {
-                      members(first: 10) {
-                        edges {
-                          node {
-                            id
-                            login
-                          }
-                        }
+                team(slug: "npm-test-team") {
+                  members(first: 100) {
+                    edges {
+                      node {
+                        id
+                        login
                       }
                     }
                   }
