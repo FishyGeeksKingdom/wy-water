@@ -1,6 +1,5 @@
-on:
-  pull_request:
-    types: edited
+name: Pull Request Workflow
+on: pull_request
   needs: build
   runs-on: ubuntu-latest
   # Fresh checkout to protect from injection during the previous build step (like prepack)
