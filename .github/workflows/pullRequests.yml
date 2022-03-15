@@ -1,6 +1,5 @@
 name: Pull Request Workflow
 on: pull_request
-  # Fresh checkout to protect from injection during the previous build step (like prepack)
   jobs:
     check_review:
       runs-on: ubuntu-latest
