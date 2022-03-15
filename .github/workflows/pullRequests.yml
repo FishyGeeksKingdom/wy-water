@@ -1,20 +1,22 @@
 name: Pull Request Workflow
+
 on: pull_request
-  jobs:
-    check_review:
-      runs-on: ubuntu-latest
-      uses: ./.github/workflows/checkReviews.yml
-      with:
-        pr_id: ${{ github.event.pull_request.number }}
-        owner: ${{ github.repository_owner }}
-        name: "FishyGeeksKingdom"
-    checkout_and_publish:
-      steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 14
-        - name: Publish
-          # VERY IMPORTANT NOT TO RUN SCRIPTS TO PROTECT FROM MALICIOUS PACKAGES
-          run: |
-            echo Maybe Success!
+
+jobs:
+  check_review:
+    runs-on: ubuntu-latest
+    uses: ./.github/workflows/checkReviews.yml
+    with:
+      pr_id: ${{ github.event.pull_request.number }}
+      owner: ${{ github.repository_owner }}
+      name: "FishyGeeksKingdom"
+  checkout_and_publish:
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Publish
+        # VERY IMPORTANT NOT TO RUN SCRIPTS TO PROTECT FROM MALICIOUS PACKAGES
+        run: |
+          echo Maybe Success!
