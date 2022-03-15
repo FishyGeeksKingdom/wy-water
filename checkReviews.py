@@ -14,7 +14,7 @@ if __name__== "__main__":
       teamMap[member["node"]["id"]] = member["node"]["login"]
 
   print(reviews)
-  print(teams)
+  print(teamMap)
 
   approvedReviews = []
   readyToPublish = False
