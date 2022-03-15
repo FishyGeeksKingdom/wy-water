@@ -19,7 +19,7 @@ if __name__== "__main__":
   approvedReviews = []
   readyToPublish = False
   for review in reviews:
-    if review["node"]["state"] == 'APPROVED' & review["node"]["author"]["id"] in teamMap:
+    if review["node"]["state"] == 'APPROVED' and review["node"]["author"]["id"] in teamMap:
       readyToPublish = True
       # approvedReviews.append(review["node"])
       print('yay')
