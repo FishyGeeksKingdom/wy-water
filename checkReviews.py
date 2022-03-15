@@ -26,7 +26,7 @@ if __name__== "__main__":
   
   
   if not readyToPublish:
-    print("A merge into main requires a review approval from one of the following team members: " + ', '.join(teamMap.items()))
+    print("A merge into main requires a review approval from one of the following team members: " + ', '.join(teamMap.values()))
   else:
     print("Send it")
 
