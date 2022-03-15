@@ -48,10 +48,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      - name: Python Script
-        run: python checkReviews.py
-        shell: sh
-
   check_review:
     # uses: actions/checkout@v2
     uses: ./.github/workflows/checkReviews.yml
