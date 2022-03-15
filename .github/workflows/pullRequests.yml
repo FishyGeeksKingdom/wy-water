@@ -1,10 +1,9 @@
 name: Pull Request Workflow
 on: pull_request
-  needs: build
-  runs-on: ubuntu-latest
   # Fresh checkout to protect from injection during the previous build step (like prepack)
   jobs:
     check_review:
+      runs-on: ubuntu-latest
       uses: ./.github/workflows/checkReviews.yml
       with:
         pr_id: ${{ github.event.pull_request.number }}
