@@ -1,6 +1,6 @@
 on:
   pull_request:
-    types: [edited]
+    types: edited
   needs: build
   runs-on: ubuntu-latest
   # Fresh checkout to protect from injection during the previous build step (like prepack)
