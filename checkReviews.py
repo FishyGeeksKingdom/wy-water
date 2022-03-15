@@ -11,7 +11,7 @@ if __name__== "__main__":
   teams = json.loads(teams_raw)["data"]["organization"]["team"]["members"]["edges"]
 
   for member in teams:
-      teamMap[member["node"]["id"]] = ["login"]
+      teamMap[member["node"]["id"]] = member["node"]["login"]
 
   print(reviews)
   print(teams)
