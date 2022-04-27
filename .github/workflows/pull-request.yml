@@ -1,8 +1,9 @@
 on:
   pull_request:
-    paths-ignore: ".github/**"
     branches:
       - main
+    paths-ignore:
+      - ".github/**"
 jobs:
   # This workflow contains a single job called "build"
   check-version:
