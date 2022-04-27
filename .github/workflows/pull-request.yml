@@ -23,10 +23,9 @@ jobs:
           echo $var
 
           versionText=$(cat package.json | jq -r '.version') 
-          echo $versionText 
+          echo "TARGET_VERSION=$(echo $versionText)" >> $GITHUB_ENV 
 
-          echo "TARGET_VERSION=$(echo ${versionText//./})" >> $GITHUB_ENV
-          echo TARGET_VERSION
+          echo $TARGET_VERSION
 
       - uses: actions/checkout@v2
       - name: Get Source Version
@@ -36,9 +35,9 @@ jobs:
           echo $var
 
           versionText=$(cat package.json | jq -r '.version') 
+          echo "SOURCE_VERSION=$(echo $versionText)" >> $GITHUB_ENV
 
-          versionNumber=$(echo ${versionText//./})
-          echo $versionNumber
       - name: Compare Versions
         run: |
           echo ${{ env.TARGET_VERSION }}
+          echo ${{ env.SOURCE_VERSION }}
