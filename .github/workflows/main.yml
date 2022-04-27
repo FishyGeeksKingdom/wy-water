@@ -47,9 +47,3 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  # Check requires pull request on main
-  require-pull-request:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo You Must Open A Pull Request to Merge Into Master
