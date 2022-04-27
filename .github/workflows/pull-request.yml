@@ -57,15 +57,14 @@ jobs:
             echo "VERSION_FAILURE=0" >> $GITHUB_ENV
           fi
 
-      - uses: actions/github-script@v5
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
       - name: Comment on Version
         if: ${{ env.VERSION_FAILURE }} == 0
-        script: |
-          github.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: 'Don't forget to bump the versions in package.json and package-lock.json!'
-          })
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Don't forget to bump the versions in package.json and package-lock.json!'
+            })
