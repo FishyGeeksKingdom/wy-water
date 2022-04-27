@@ -58,5 +58,6 @@ jobs:
           fi
 
       - name: Comment on Version
+        if: ${{ env.VERSION_FAILURE }} == 0
         run: |
           echo ${{ env.VERSION_FAILURE }}
