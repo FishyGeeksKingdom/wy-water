@@ -22,13 +22,13 @@ jobs:
           var=$(cat package.json)
           echo $var
 
+          versionText=$(cat package.json | jq -r 'version') 
+
+          echo $versionText
+
       - uses: actions/checkout@v2
       - name: Run a multi-line script Source
         run: |
-          echo ${{ github.workspace }}
-          echo ${{ github.ref }}
           echo ${{ github.head_ref }}
-          echo ${{ github.base_ref }}
-
           var=$(cat package.json)
           echo $var
