@@ -67,3 +67,4 @@ jobs:
               repo: context.repo.repo,
               body: "Don't forget to bump the versions in package.json and package-lock.json!"
             })
+        run: exit 1
