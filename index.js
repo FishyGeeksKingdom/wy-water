@@ -1,4 +1,3 @@
-// what if I comment here?
 module.exports = async function getSnakeRiverFlows() {
   const uri =
     "http://waterservices.usgs.gov/nwis/iv/?site=13022500&format=json";
