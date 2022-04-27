@@ -65,5 +65,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Don't forget to bump the versions in package.json and package-lock.json!'
+              body: "Don't forget to bump the versions in package.json and package-lock.json!"
             })
