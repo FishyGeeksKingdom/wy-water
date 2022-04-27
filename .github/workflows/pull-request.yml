@@ -43,13 +43,9 @@ jobs:
           echo ${{ env.SOURCE_VERSION }}
 
           versionFunction() {
-            test "$(echo -e "$1\n$2" | sort -V | head -n1)" != "$1";
+            test "$(echo -e "$1\n$2" | sort -V | head -n 1)" != "$1";
           }
 
           if versionFunction ${{ env.SOURCE_VERSION }} ${{ env.TARGET_VERSION }}; then
             echo "${{ env.SOURCE_VERSION }} is greater than ${{ env.TARGET_VERSION }}"
           fi
-
-
-          willThisWork=$(versionFunction ${{ env.SOURCE_VERSION }} ${{ env.TARGET_VERSION }})
-          echo $willThisWork
