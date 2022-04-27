@@ -53,5 +53,5 @@ jobs:
           then
             echo "${{ env.SOURCE_VERSION }} is greater than ${{ env.TARGET_VERSION }}"
           else
-            ::warning file={package.json},line={1},title={Bump Version}::{You must bump the version before publishing this package}
+            echo ::warning file={package.json},line={1},title={Bump Version}::{You must bump the version before publishing this package}
           fi
