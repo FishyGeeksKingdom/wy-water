@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches:
-      - main
+      *
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -52,12 +52,3 @@ jobs:
         run: python checkReviews.py
         shell: sh
 
-  check_review:
-    # uses: actions/checkout@v2
-    uses: ./.github/workflows/checkReviews.yml
-    with:
-      pr_id: ${{ github.event.pull_request.number }}
-      owner: ${{ github.repository_owner }}
-      name: "FishyGeeksKingdom"
-    secrets:
-      team_key: ${{ secrets.TEAM_KEY }}
