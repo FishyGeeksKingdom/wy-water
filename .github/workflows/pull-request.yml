@@ -43,4 +43,3 @@ jobs:
       - name: Compare Versions
         run: |
           echo ${{ env.TARGET_VERSION }}
-          echo ${{ env.$SOURCE_VERSION }}
