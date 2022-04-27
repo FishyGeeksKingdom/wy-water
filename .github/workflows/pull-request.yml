@@ -41,3 +41,13 @@ jobs:
         run: |
           echo ${{ env.TARGET_VERSION }}
           echo ${{ env.SOURCE_VERSION }}
+
+          versionFunction() {
+            [ "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
+          }
+          versionlt() {
+            [ "$1" = "$2" ] && return 1 || versionlte $1 $2
+          }
+
+          willThisWork=$(versionlt ${{ env.SOURCE_VERSION }} ${{ env.TARGET_VERSION }})
+          echo $willThisWork
