@@ -43,7 +43,7 @@ jobs:
           echo ${{ env.SOURCE_VERSION }}
 
           versionFunction() {
-            test "$(echo -e "$1\n$2" | sort -V | head -n1)" != "$1" && return “true” || return “false”;
+            test "$(echo -e "$1\n$2" | sort -V | head -n1)" != "$1";
           }
 
 
