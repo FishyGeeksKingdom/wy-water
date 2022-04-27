@@ -10,12 +10,25 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Run a multi-line script
+        with:
+          ref: ${{ github.base_ref }}
+      - name: Run a multi-line script Target
         run: |
           echo ${{ github.workspace }}
           echo ${{ github.ref }}
           echo ${{ github.head_ref }}
           echo ${{ github.base_ref }}
 
-          var=$(cat main/package.json)
+          var=$(cat package.json)
+          echo $var
+
+      - uses: actions/checkout@v2
+      - name: Run a multi-line script Source
+        run: |
+          echo ${{ github.workspace }}
+          echo ${{ github.ref }}
+          echo ${{ github.head_ref }}
+          echo ${{ github.base_ref }}
+
+          var=$(cat package.json)
           echo $var
