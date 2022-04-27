@@ -46,7 +46,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo ${{ github.workspace }}
-          var=${{ grep -c 'Version' package.json }}
+          var=$(cat package.json)
           echo $var
 
 
