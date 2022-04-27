@@ -23,8 +23,10 @@ jobs:
           echo $var
 
           versionText=$(cat package.json | jq -r '.version') 
-
           echo $versionText
+
+          versionNumber=$(echo $versionText | sed 's/.//g')
+          echo $versionNumber
 
       - uses: actions/checkout@v2
       - name: Run a multi-line script Source
