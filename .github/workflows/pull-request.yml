@@ -54,4 +54,9 @@ jobs:
             echo "${{ env.SOURCE_VERSION }} is greater than ${{ env.TARGET_VERSION }}"
           else
             echo ::warning file={package.json},line={1},title={Bump Version}::{You must bump the version before publishing this package}
+            echo "VERSION_FAILURE=0" >> $GITHUB_ENV
           fi
+
+      - name: Comment on Version
+        run: |
+          echo ${{ env.VERSION_FAILURE }}
