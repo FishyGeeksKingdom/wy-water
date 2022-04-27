@@ -57,8 +57,10 @@ jobs:
             echo "VERSION_FAILURE=0" >> $GITHUB_ENV
           fi
 
-      - name: Comment on Version
-        if: ${{ env.VERSION_FAILURE }} == 0
+  comment-on-pr:
+    if: ${{ env.VERSION_FAILURE }} == 0
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/github-script@v6
         with:
           script: |
