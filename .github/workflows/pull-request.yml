@@ -1,0 +1,53 @@
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - ".github/**"
+jobs:
+  # This workflow contains a single job called "build"
+  check-version:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.base_ref }}
+      - name: Get Target Version
+        run: |
+          echo ${{ github.workspace }}
+          echo ${{ github.ref }}
+          echo ${{ github.head_ref }}
+          echo ${{ github.base_ref }}
+
+          var=$(cat package.json)
+          echo $var
+
+          versionText=$(cat package.json | jq -r '.version') 
+          echo "TARGET_VERSION=$(echo $versionText)" >> $GITHUB_ENV 
+
+          echo $TARGET_VERSION
+
+      - uses: actions/checkout@v2
+      - name: Get Source Version
+        run: |
+          echo ${{ github.head_ref }}
+          var=$(cat package.json)
+          echo $var
+
+          versionText=$(cat package.json | jq -r '.version') 
+          echo "SOURCE_VERSION=$(echo $versionText)" >> $GITHUB_ENV
+
+      - name: Compare Versions
+        run: |
+          echo ${{ env.TARGET_VERSION }}
+          echo ${{ env.SOURCE_VERSION }}
+
+          versionFunction() {
+            test "$(echo -e "$1\n$2" | sort -V | head -n 1)" != "$1";
+          }
+
+          if versionFunction ${{ env.SOURCE_VERSION }} ${{ env.TARGET_VERSION }}; then
+            echo "${{ env.SOURCE_VERSION }} is greater than ${{ env.TARGET_VERSION }}"
+          fi
