@@ -46,6 +46,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo ${{ github.workspace }}
-          echo ${{ github.ref }}
+          var=${{ grep -c 'Version' package.json }}
+          echo $var
+
 
           echo test, and deploy your project.
