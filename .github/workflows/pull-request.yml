@@ -25,8 +25,8 @@ jobs:
           versionText=$(cat package.json | jq -r '.version') 
           echo $versionText 
 
-          echo "versionNumber=$(echo ${versionText//./})" >> $TARGET_VERSION
-          echo versionNumber
+          echo "TARGET_VERSION=$(echo ${versionText//./})" >> $GITHUB_ENV
+          echo TARGET_VERSION
 
       - uses: actions/checkout@v2
       - name: Get Source Version
