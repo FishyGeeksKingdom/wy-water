@@ -17,7 +17,5 @@ jobs:
           echo ${{ github.head_ref }}
           echo ${{ github.base_ref }}
 
-          var=$(cat package.json)
+          var=$(cat main/package.json)
           echo $var
-
-          echo test, and deploy your project.
