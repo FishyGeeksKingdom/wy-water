@@ -58,7 +58,6 @@ jobs:
           fi
 
   comment-on-pr:
-    if: ${{ env.VERSION_FAILURE }} == 0
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
