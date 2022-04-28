@@ -11,5 +11,4 @@ jobs:
   Builds:
     runs-on: ubuntu-latest
     steps:
-      - name: build
-        run: echo Nothing To Build
+      - run: echo Nothing To Build
