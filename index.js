@@ -6,7 +6,6 @@ module.exports = async function getSnakeRiverFlows() {
 
   xhr.open("GET", uri);
 
-  // DOESN'T WORK
   xhr.onload = () => {
     if (xhr.status === 200) {
       data = JSON.parse(xhr.responseText);
