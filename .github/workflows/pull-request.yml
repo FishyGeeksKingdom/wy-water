@@ -75,4 +75,6 @@ jobs:
   Publish-Package:
     needs: [check-version, Build]
     if: github.ref == 'refs/heads/main' && github.event.pull_request.merged == true && github.event.action == 'closed'
-    run: echo Send it!
+    runs-on: ubuntu-latest
+    steps:
+      run: echo Send it!
