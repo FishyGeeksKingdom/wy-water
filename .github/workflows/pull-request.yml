@@ -2,7 +2,7 @@ name: Publish Checks
 
 on:
   pull_request:
-    types: [opened, synchronized, reopened, edited, closed]
+    types: [opened, synchronize, reopened, edited, closed]
     branches:
       - main
     paths-ignore:
