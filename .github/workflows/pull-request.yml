@@ -8,7 +8,7 @@ on:
     paths-ignore:
       - ".github/**"
 jobs:
-  Check-Version:
+  Check-Versions:
     if: github.event.pull_request.merged == false && github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
@@ -65,7 +65,7 @@ jobs:
         if: ${{ env.VERSION_FAILURE == 1}}
         run: exit 1
 
-  Build:
+  Builds:
     uses: ./.github/workflows/build.yml
 
   Publish-Package:
