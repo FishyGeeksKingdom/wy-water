@@ -1,4 +1,4 @@
-name: Bypass CI Only
+name: Publish Checks
 
 on:
   pull_request:
