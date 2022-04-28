@@ -77,4 +77,5 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event.pull_request.merged == true && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
-      run: echo Send it!
+      - name: Publish
+        run: echo Send it!
