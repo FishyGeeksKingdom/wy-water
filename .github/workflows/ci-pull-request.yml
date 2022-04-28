@@ -15,3 +15,8 @@ jobs:
         node-version: [12.x, 14.x]
     steps:
       - run: echo Nothing To Build
+
+  Check-Versions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Nothing To Build
