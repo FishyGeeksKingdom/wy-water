@@ -10,6 +10,13 @@ on:
 jobs:
   Builds:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
     steps:
-      - name: Skip-Checks-CI-Only
-        run: echo Nothing To Build
+      - run: echo Nothing To Build
+
+  Check-Versions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Nothing To Build
