@@ -11,5 +11,5 @@ jobs:
   Builds:
     runs-on: ubuntu-latest
     steps:
-      - name: Skip-Checks-CI-Only
+      - name: build
         run: echo Nothing To Build
