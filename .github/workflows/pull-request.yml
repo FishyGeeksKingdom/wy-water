@@ -89,5 +89,15 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
       - name: Publish
-        run: echo Send it!
+        # VERY IMPORTANT NOT TO RUN SCRIPTS TO PROTECT FROM MALICIOUS PACKAGES
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+
+          npm publish --ignore-scripts
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
