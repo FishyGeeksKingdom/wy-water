@@ -2,13 +2,16 @@ name: Publish Checks
 
 on:
   pull_request:
-    types: [opened, synchronized, reopened, edited, closed]
+    types: [opened, synchronize, reopened, edited, closed]
     branches:
       - main
     paths-ignore:
       - ".github/**"
 jobs:
-  Check-Version:
+  Builds:
+    uses: ./.github/workflows/build.yml
+
+  Check-Versions:
     if: github.event.pull_request.merged == false && github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
@@ -64,11 +67,9 @@ jobs:
       - name: Fail
         if: ${{ env.VERSION_FAILURE == 1}}
         run: exit 1
-  Build:
-    uses: ./.github/workflows/build.yml
 
   Publish-Package:
-    needs: [Build]
+    needs: [Builds]
     if: github.event.pull_request.merged == true && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
