@@ -55,7 +55,7 @@ jobs:
             echo "VERSION_FAILURE=1" >> $GITHUB_ENV
           fi
       - name: Comment On Pull Request
-        if: ${{ env.VERSION_FAILURE }} == 1
+        if: ${{ env.VERSION_FAILURE  == 1}}
         uses: actions/github-script@v6
         with:
           script: |
@@ -67,7 +67,7 @@ jobs:
             })
 
       - name: Fail
-        if: ${{ env.VERSION_FAILURE }} == 1
+        if: ${{ env.VERSION_FAILURE == 1}}
         run: echo ${{ env.VERSION_FAILURE }}
   Build:
     uses: ./.github/workflows/build.yml
