@@ -74,7 +74,7 @@ jobs:
 
   Publish-Package:
     needs: [check-version, Build]
-    if: github.ref == 'refs/heads/main' && github.event.pull_request.merged == true && github.event.action == 'closed'
+    if: github.base_ref == 'refs/heads/main' && github.event.pull_request.merged == true && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
       - name: Publish
