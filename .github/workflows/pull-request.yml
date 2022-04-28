@@ -68,7 +68,7 @@ jobs:
 
       - name: Fail
         if: ${{ env.VERSION_FAILURE }} == 1
-        run: exit 1
+        run: echo ${{ env.VERSION_FAILURE }}
   Build:
     uses: ./.github/workflows/build.yml
 
