@@ -16,38 +16,5 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    uses: ./.github/workflows/build.yml
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Build for multiple node versions
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x]
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Build on Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci --ignore-scripts
-      - run: npm run build --if-present
-        name: Build
-      #- run: npm test
-      # env:
-      #  CI: true
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo ${{ secrets.TEAM_KEY }}
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo ${{ github.workspace }}
-          var=$(cat package.json)
-          echo $var
-
-
-          echo test, and deploy your project.
