@@ -10,5 +10,8 @@ on:
 jobs:
   Builds:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
     steps:
       - run: echo Nothing To Build
