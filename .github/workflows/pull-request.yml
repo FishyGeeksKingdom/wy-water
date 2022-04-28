@@ -10,7 +10,7 @@ on:
 jobs:
   # This workflow contains a single job called "build" LETS GO!!!!!*****shit
   Check-Version:
-    # The type of runner that the job will run on
+    if: github.event.pull_request.merged == false && github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -19,18 +19,8 @@ jobs:
           ref: ${{ github.base_ref }}
       - name: Get Target Version
         run: |
-          echo ${{ github.workspace }}
-          echo ${{ github.ref }}
-          echo ${{ github.head_ref }}
-          echo ${{ github.base_ref }}
-
-          var=$(cat package.json)
-          echo $var
-
           versionText=$(cat package.json | jq -r '.version') 
-          echo "TARGET_VERSION=$(echo $versionText)" >> $GITHUB_ENV 
-
-          echo $TARGET_VERSION
+          echo "TARGET_VERSION=$(echo $versionText)" >> $GITHUB_ENV
 
       - uses: actions/checkout@v2
       - name: Get Source Version
@@ -74,7 +64,7 @@ jobs:
     uses: ./.github/workflows/build.yml
 
   Publish-Package:
-    needs: [check-version, Build]
+    needs: [Build]
     if: github.base_ref == 'refs/heads/main' && github.event.pull_request.merged == true && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
