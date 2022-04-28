@@ -10,7 +10,7 @@ on:
 jobs:
   Builds:
     runs-on: ubuntu-latest
-    # Build for multiple node versions
+    # Build for multiple node versions.
     strategy:
       matrix:
         node-version: [12.x, 14.x]
