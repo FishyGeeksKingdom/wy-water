@@ -1,0 +1,15 @@
+name: Bypass CI Only
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, closed]
+    branches:
+      - main
+    paths:
+      - ".github/**"
+jobs:
+  Builds:
+    runs-on: ubuntu-latest
+    steps:
+      - Name: Skip-Checks-CI-Only
+        run: echo Nothing To Build
