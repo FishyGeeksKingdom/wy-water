@@ -69,3 +69,10 @@ jobs:
       - name: Fail
         if: ${{ env.VERSION_FAILURE }} == 0
         run: exit 1
+  Build:
+    uses: ./.github/workflows/build.yml
+
+  Publish-Package:
+    needs: [check-version, Build]
+    if: github.ref == 'refs/heads/main' && github.event.pull_request.merged == true && github.event.action == 'closed'
+    run: echo Send it!
