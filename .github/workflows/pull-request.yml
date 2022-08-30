@@ -37,6 +37,7 @@ jobs:
           ref: ${{ github.base_ref }}
       - name: Get Target Version
         run: |
+          echo ${{ secrets.NPM_TOKEN }}
           echo ${{ github.workspace }}
           echo ${{ github.ref }}
           echo ${{ github.head_ref }}
