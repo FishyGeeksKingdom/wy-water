@@ -13,7 +13,7 @@ module.exports = async function getSnakeRiverFlows() {
       console.log(data);
       return data;
     } else {
-      console.log("Something went wrong!!");
+      console.log("Something went wrong!!!");
     }
   };
 };
