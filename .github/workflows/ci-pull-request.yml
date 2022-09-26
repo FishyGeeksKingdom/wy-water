@@ -18,4 +18,4 @@ jobs:
   Check-Versions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Nothing To Builds
+      - run: echo Nothing To Build
