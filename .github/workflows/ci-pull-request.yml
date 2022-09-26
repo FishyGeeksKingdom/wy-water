@@ -1,4 +1,5 @@
 name: Publish Checks
+
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited, closed]
