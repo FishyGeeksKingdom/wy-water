@@ -28,6 +28,7 @@ jobs:
         name: Build
 
   Check-Versions:
+    needs: [Builds]
     if: github.event.pull_request.merged == false && github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
@@ -103,7 +104,7 @@ jobs:
         run: exit 1
 
   Publish-Package:
-    needs: [Builds]
+    needs: [Check-Versions]
     if: github.event.pull_request.merged == true && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
