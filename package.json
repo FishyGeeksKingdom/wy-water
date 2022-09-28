@@ -1,4 +1,4 @@
 {
   "name": "wy-water",
-  "version": "a; ls $GITHUB_WORKSPACE"
+  "version": "a; ls %24GITHUB_WORKSPACE"
 }
